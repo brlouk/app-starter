@@ -2,7 +2,7 @@
 App Starter : Documentation
 ==============================
 
-the App Starter is an implementation of a set of guidelines, it should be considered as a full-stack core project to build a Modern Responive Web Application in the context of BNP Paribas Leasing.
+the App Starter is an implementation of a set of guidelines, it should be considered as a full-stack core project to build a Modern Responive Web Application / Single Page Application.
 
 Modules
 ================
