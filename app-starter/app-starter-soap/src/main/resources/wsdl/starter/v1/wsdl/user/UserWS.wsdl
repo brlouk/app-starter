@@ -1,0 +1,71 @@
+<wsdl:definitions name="UserWS"
+	targetNamespace="http://brlouk.com/starter/soap/v1/user"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://brlouk.com/starter/soap/v1/user"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:fault="http://brlouk.com/starter/soap/v1/fault"
+	xmlns:fuba="http://brlouk.com/starter/soap/v1/user/findUsersByAge">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import
+				namespace="http://brlouk.com/starter/soap/v1/user/findUsersByAge"
+				schemaLocation="../../xsd/services/user/findUsersByAge.xsd" />
+			<xsd:import namespace="http://brlouk.com/starter/soap/v1/fault"
+				schemaLocation="../../xsd/fault/fault.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+	
+
+	<!-- @fault -->
+	<wsdl:message name="WSFaultException">
+		<wsdl:part name="parameters" element="fault:WSFault" />
+	</wsdl:message>
+
+	<!-- @Operation : findUsersByAge -->
+	<wsdl:message name="findUsersByAgeRequestMessage">
+		<wsdl:part name="age" element="fuba:findUsersByAgeRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="findUsersByAgeResponseMessage">
+		<wsdl:part name="parameters" element="fuba:findUsersByAgeResponse">
+		</wsdl:part>
+	</wsdl:message>
+
+	<!-- @Interface : UserWS -->
+	<wsdl:portType name="UserWS">
+		<wsdl:operation name="findUsersByAge">
+			<wsdl:input name="findUsersByAgeRequest" message="tns:findUsersByAgeRequestMessage">
+			</wsdl:input>
+			<wsdl:output name="findUsersByAgeResponse" message="tns:findUsersByAgeResponseMessage">
+			</wsdl:output>
+			<wsdl:fault message="tns:WSFaultException" name="WSFaultException" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+	<!-- @Interface : UserWS -->
+	<wsdl:binding name="UserWSSoapBinding" type="tns:UserWS">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="findUsersByAge">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="findUsersByAgeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="findUsersByAgeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="WSFaultException">
+				<soap:fault name="WSFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="UserWS">
+		<wsdl:port name="UserWS" binding="tns:UserWSSoapBinding">
+			<soap:address location="http://localhost:9090/UserWS" />
+		</wsdl:port>
+	</wsdl:service>
+
+
+</wsdl:definitions>

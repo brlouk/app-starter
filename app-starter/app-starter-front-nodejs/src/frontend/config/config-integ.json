@@ -1,0 +1,8 @@
+{
+  "name": "appstarter",
+  "constants": {
+    "config": {
+      "apiBase": "http://[integ]/appstarter-backend/ws"
+    }
+  }
+}

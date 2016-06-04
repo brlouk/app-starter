@@ -1,0 +1,35 @@
+<div class="container">
+
+	<div>
+		<app-navbar creation-date="main.creationDate"></app-navbar>
+	</div>
+
+	<div>
+		<div class="row">
+			<uib-pagination total-items="user.totalItems"
+				ng-model="user.currentPage" max-size="10" class="pagination-sm"
+				boundary-links="true" rotate="false" ng-change="user.pageChanged()"></uib-pagination>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>email</th>
+					<th>birthDate</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="u in user.users">
+					<td>{{u.firstName}}</td>
+					<td>{{u.lastName}}</td>
+					<td>{{u.email}}</td>
+					<td>{{u.birthDate | date:'dd/MM/yyyy'}}</td>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+</div>

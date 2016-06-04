@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://brlouk.com/starter/soap/v1/model/user"
+	xmlns:st="http://brlouk.com/starter/soap/v1/common/simpleTypes"
+	targetNamespace="http://brlouk.com/starter/soap/v1/model/user"
+	attributeFormDefault="unqualified" elementFormDefault="unqualified"
+	version="1.0">
+
+	<xs:import
+		namespace="http://brlouk.com/starter/soap/v1/common/simpleTypes"
+		schemaLocation="../common/simpleTypes.xsd" />
+
+	<xs:complexType name="userType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="firstName" />
+			<xs:element type="xs:string" name="lastName" />
+			<xs:element type="st:emailType" name="email" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.brlouk</groupId>
+		<artifactId>app-starter</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>app-starter-soap</artifactId>
+
+	<!-- @DEPENDENCIES -->
+	<dependencies>
+		<!-- @MODULES -->
+		<dependency>
+			<groupId>com.brlouk</groupId>
+			<artifactId>app-starter-rest</artifactId>
+		</dependency>
+
+		<!-- @SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+				
+
+		<!-- @WS : SOAP - CXF -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-addr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-policy</artifactId>
+		</dependency>
+
+		<!-- Orika -->
+		<dependency>
+			<groupId>ma.glasnost.orika</groupId>
+			<artifactId>orika-core</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${cxf-version}</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<configuration>
+							<!-- <sourceRoot>${basedir}/src/main/java</sourceRoot> -->
+							<defaultOptions>
+								<bindingFiles>
+									<bindingFile>${project.basedir}/src/main/resources/wsdl/mapping.xjb.xml</bindingFile>
+								</bindingFiles>
+								<noAddressBinding>true</noAddressBinding>
+								<extraargs>
+									<!-- <extraarg>-impl</extraarg> -->
+									<extraarg>-verbose</extraarg>
+								</extraargs>
+							</defaultOptions>
+							<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
+							<includes>
+								<include>**/*.wsdl</include>
+							</includes>
+							<encoding>UTF-8</encoding>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

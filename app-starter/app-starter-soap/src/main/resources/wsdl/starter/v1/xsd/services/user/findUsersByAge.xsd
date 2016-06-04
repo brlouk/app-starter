@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://brlouk.com/starter/soap/v1/user/findUsersByAge"
+	attributeFormDefault="unqualified" elementFormDefault="unqualified"
+	xmlns:mu="http://brlouk.com/starter/soap/v1/model/user"
+	targetNamespace="http://brlouk.com/starter/soap/v1/user/findUsersByAge"
+	version="1.0">
+
+	<xs:import
+		namespace="http://brlouk.com/starter/soap/v1/model/user"
+		schemaLocation="../../model/user.xsd" />
+
+	<xs:element name="findUsersByAgeRequest" type="xs:int" nillable="false" />
+<!-- 	<xs:complexType name="findUsersByAgeRequestType"> -->
+<!-- 		<xs:sequence> -->
+<!-- 			<xs:element name="age" type="xs:int" minOccurs="1" maxOccurs="1" /> -->
+<!-- 		</xs:sequence> -->
+<!-- 	</xs:complexType> -->
+
+	<xs:element name="findUsersByAgeResponse" type="tns:findUsersByAgeResponseType" />
+	<xs:complexType name="findUsersByAgeResponseType">
+		<xs:sequence>
+			<xs:element name="users" type="mu:userType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

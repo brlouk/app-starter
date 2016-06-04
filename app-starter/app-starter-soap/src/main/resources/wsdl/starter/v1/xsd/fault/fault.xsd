@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://brlouk.com/starter/soap/v1/fault"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://brlouk.com/starter/soap/v1/fault"
+	elementFormDefault="unqualified" attributeFormDefault="unqualified"
+	version="1.0">
+	<xs:element name="WSFault" type="tns:WSFaultType">
+		<xs:annotation>
+			<xs:documentation> Erreurs communes pour les parties techniques et
+				fonctionnelles.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WSFaultType">
+		<xs:choice>
+			<xs:element name="WSFaultFunctional" type="tns:WSFaultFunctionalType"
+				minOccurs="1" maxOccurs="unbounded" />
+			<xs:element name="WSFaultTechnical" type="tns:WSFaultTechnicalType"
+				minOccurs="1" maxOccurs="1" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="WSFaultTechnicalType">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Code erreur.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Message" type="tns:WSMessageType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Message par défaut.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WSFaultFunctionalType">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Code erreur.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Message" type="tns:WSMessageType">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Message par défaut.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WSMessageType">
+		<xs:sequence>
+			<xs:element name="Text" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Text brut.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Param" type="xs:anySimpleType"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="fr"> Params utilisés dans
+						le message
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

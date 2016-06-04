@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://brlouk.com/starter/soap/v1/common/simpleTypes"
+	xmlns:tns="http://brlouk.com/starter/soap/v1/common/simpleTypes"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	version="1.0">
+
+	<xs:simpleType name="emailType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="254" />
+			<xs:pattern
+				value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
